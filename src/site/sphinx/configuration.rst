@@ -1,7 +1,6 @@
 .. _`Sphinx commandline documentation`: http://sphinx.pocoo.org/man/sphinx-build.html?highlight=command%20line
 .. _`Sphinx tag documentation`: http://sphinx.pocoo.org/markup/misc.html#tags
 .. _`Jython`: http://www.jython.org/
-.. _`rst2pdf manual`: http://lateral.netmanagers.com.ar/static/manual.pdf
 
 Configuration
 =============
@@ -26,36 +25,6 @@ Parameter            Description                                                
 ``force``            Whether Sphinx should generate output for all files instead of only the changed ones.             ``false``
 ``tags``             Additional tags to pass to Sphinx. See the `Sphinx tag documentation`_ for more information.
 ==================== ================================================================================================= ========================================
-
-Building PDFs
-=============
-
-The ``sphinx-maven`` plugin has experimental support for PDF generation. You'll turn it on
-by using the pdf builder, e.g.::
-
-    <plugin>
-      <groupId>io.airlift.maven.plugins</groupId>
-      <artifactId>sphinx-maven-plugin</artifactId>
-      <version>1.0</version>
-      <configuration>
-        <builder>pdf</builder>
-        <outputDirectory>${project.reporting.outputDirectory}/pdf</outputDirectory>
-      </configuration>
-    </plugin>
-
-You'll likely also have to add some additional configuration options to your ``conf.py``
-file (usually in ``src/site/sphinx``) to tell the pdf builder what to do. At a minimum
-you'll probably need to point it to the index page by adding this to the end::
-
-    # -- Options for PDF output ---------------------------------------------------
-    pdf_documents = [
-        ('index', u'<file name>', u'<document name>', u'<author>'),
-    ]
-
-For additional options see the Sphinx section of the `rst2pdf manual`_.
-
-Please note that alpha channels in the images (i.e. PNGs) are not supported, and will be replaced with
-black pixels. This is most likely not what you want, so please don't use alpha channels in the images.
 
 A note on memory usage
 ======================

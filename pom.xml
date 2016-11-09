@@ -386,17 +386,6 @@
                   <outputDirectory>${project.build.directory}/docs</outputDirectory>
                 </configuration>
               </execution>
-              <execution>
-                <id>standalone-pdf-docs</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>generate</goal>
-                </goals>
-                <configuration>
-                  <builder>pdf</builder>
-                  <outputDirectory>${project.build.directory}/docs-pdf</outputDirectory>
-                </configuration>
-              </execution>
             </executions>
           </plugin>
         </plugins>
