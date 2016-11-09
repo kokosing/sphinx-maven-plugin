@@ -34,9 +34,9 @@ The ``sphinx-maven`` plugin has experimental support for PDF generation. You'll 
 by using the pdf builder, e.g.::
 
     <plugin>
-      <groupId>org.tomdz.maven</groupId>
+      <groupId>io.airlift.maven.plugins</groupId>
       <artifactId>sphinx-maven-plugin</artifactId>
-      <version>1.0.3</version>
+      <version>1.0</version>
       <configuration>
         <builder>pdf</builder>
         <outputDirectory>${project.reporting.outputDirectory}/pdf</outputDirectory>
@@ -69,9 +69,9 @@ of PermGen space). Therefore we suggest to either run maven with at least 256mb 
 or use the fork parameter of the plugin, e.g.::
 
     <plugin>
-      <groupId>org.tomdz.maven</groupId>
+      <groupId>io.airlift.maven.plugins</groupId>
       <artifactId>sphinx-maven-plugin</artifactId>
-      <version>1.0.3</version>
+      <version>1.0</version>
       <configuration>
         <fork>true</fork>
         <argLine>-Xmx256m -XX:MaxPermSize=128m</argLine>

@@ -31,7 +31,7 @@ For good examples of documentation, see `Sphinx' examples page`_.  The documenta
 based on the documentation for `Werkzeug`_ (documentation source for it can be found on `Werkzeug's github page`_)
 and `Celery`_ (documentation source can be found on `Celery's github page`_).
 
-Running as part of the ``site`` lifecycle 
+Running as part of the ``site`` lifecycle
 =========================================
 
 Simply add the sphinx maven plugin to your ``pom.xml``::
@@ -49,7 +49,7 @@ Simply add the sphinx maven plugin to your ``pom.xml``::
           </reportSets>
         </plugin>
         <plugin>
-          <groupId>org.tomdz.maven</groupId>
+          <groupId>io.airlift.maven.plugins</groupId>
           <artifactId>sphinx-maven-plugin</artifactId>
           <version>1.0.1</version>
         </plugin>
@@ -91,14 +91,14 @@ be used with both Maven 2 and Maven 3::
                     </reportSets>
                   </plugin>
                   <plugin>
-                    <groupId>org.tomdz.maven</groupId>
+                    <groupId>io.airlift.</groupId>
                     <artifactId>sphinx-maven-plugin</artifactId>
-                    <version>1.0.1</version>
+                    <version>1.0</version>
                   </plugin>
                 </reportPlugins>
               </configuration>
             </plugin>
-          </plugins>        
+          </plugins>
         </build>
       </profile>
     </profiles>
@@ -112,7 +112,7 @@ Now all you need to do is to generate the documentation::
 
 This will generate the documentation in the `target/site` folder.
 
-Running as part of the normal lifecycle 
+Running as part of the normal lifecycle
 =======================================
 
 You can also bind the plugin to a normal lifecycle phase. This is for instance useful if you want to generate a
@@ -128,9 +128,9 @@ A sample ``pom.xml`` plugin section could look like this::
       <plugins>
         ...
         <plugin>
-          <groupId>org.tomdz.maven</groupId>
+          <groupId>io.airlift.maven.plugins</groupId>
           <artifactId>sphinx-maven-plugin</artifactId>
-          <version>1.0.1</version>
+          <version>1.0</version>
           <configuration>
             <outputDirectory>${project.build.directory}/docs</outputDirectory>
           </configuration>

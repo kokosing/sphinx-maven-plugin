@@ -30,9 +30,9 @@ documentation out of [reStructured Text](http://docutils.sf.net/rst.html) source
 				      </reportSets>
 				    </plugin>
 				    <plugin>
-				      <groupId>org.tomdz.maven</groupId>
+				      <groupId>io.airlift.maven.plugins</groupId>
 				      <artifactId>sphinx-maven-plugin</artifactId>
-				      <version>1.0.2</version>
+				      <version>1.0</version>
 				    </plugin>
 				  </plugins>
 				</reporting>
@@ -71,9 +71,9 @@ documentation out of [reStructured Text](http://docutils.sf.net/rst.html) source
                                 </reportSets>
                               </plugin>
                               <plugin>
-                                <groupId>org.tomdz.maven</groupId>
+                                <groupId>io.airlift.maven.plugins</groupId>
                                 <artifactId>sphinx-maven-plugin</artifactId>
-                                <version>1.0.2</version>
+                                <version>1.0</version>
                               </plugin>
                             </reportPlugins>
                           </configuration>

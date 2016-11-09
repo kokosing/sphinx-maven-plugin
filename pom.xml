@@ -8,13 +8,13 @@
     <version>7</version>
   </parent>
 
-  <groupId>org.tomdz.maven</groupId>
+  <groupId>io.airlift.maven.plugins</groupId>
   <artifactId>sphinx-maven-plugin</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
-  <url>http://www.tomdz.org</url>
-  <name>sphinx-maven</name>
+  <url>https://github.com/airlift/sphinx-maven-plugin</url>
+  <name>sphinx-maven-plugin</name>
   <description>Maven plugin that creates the site with Sphinx</description>
 
   <licenses>
@@ -26,17 +26,12 @@
   </licenses>
 
   <developers>
-    <developer>
-      <id>tomdz</id>
-      <name>Thomas Dudziak</name>
-      <url>https://github.com/tomdz</url>
-    </developer>
+    <!-- see git log -->
   </developers>
 
   <scm>
-    <connection>scm:git:git://github.com/tomdz/sphinx-maven.git</connection>
-    <developerConnection>scm:git:git@github.com:tomdz/sphinx-maven.git</developerConnection>
-    <url>http://github.com/tomdz/sphinx-maven/tree/master</url>
+    <connection>scm:git:git://github.com/airlift/sphinx-maven-plugin.git</connection>
+    <url>https://github.com/airlift/sphinx-maven-plugin</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -294,7 +289,7 @@
               </configuration>
             </plugin>
             <plugin>
-              <groupId>org.tomdz.maven</groupId>
+              <groupId>io.airlift.maven.plugins</groupId>
               <artifactId>sphinx-maven-plugin</artifactId>
               <version>${project.version}</version>
             </plugin>
@@ -358,7 +353,7 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.tomdz.maven</groupId>
+        <groupId>io.airlift.maven.plugins</groupId>
         <artifactId>sphinx-maven-plugin</artifactId>
         <version>${project.version}</version>
         <reportSets>
@@ -376,7 +371,7 @@
       <build>
         <plugins>
           <plugin>
-            <groupId>org.tomdz.maven</groupId>
+            <groupId>io.airlift.maven.plugins</groupId>
             <artifactId>sphinx-maven-plugin</artifactId>
             <version>${project.version}</version>
             <executions>
