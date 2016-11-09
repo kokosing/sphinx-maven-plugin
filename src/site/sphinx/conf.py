@@ -54,7 +54,7 @@ html_theme_path = ["_themes"]
 
 html_short_title = "Sphinx-Maven"
 
-html_static_path = ['_static']
+html_static_path = ['_themes/bootstrap/static']
 
 html_use_smartypants = True
 
