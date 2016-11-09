@@ -60,6 +60,6 @@ public class SphinxRunner
 
         engine.put("args", sphinxArgs.toArray(new String[sphinxArgs.size()]));
         engine.eval("import sphinx");
-        return (Integer) engine.eval("sphinx.main(args)");
+        return (Integer) engine.eval("sphinx.build_main(args)");
     }
 }
