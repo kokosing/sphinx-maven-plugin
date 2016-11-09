@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>
-  <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.tomdz.maven</groupId>
   <artifactId>sphinx-maven-plugin</artifactId>
-  <packaging>maven-plugin</packaging>
   <version>1.0.4-SNAPSHOT</version>
+  <packaging>maven-plugin</packaging>
+
   <url>http://www.tomdz.org</url>
   <name>sphinx-maven</name>
   <description>Maven plugin that creates the site with Sphinx</description>
+
   <licenses>
     <license>
       <name>BSD License</name>
@@ -20,6 +24,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
   <developers>
     <developer>
       <id>tomdz</id>
@@ -27,12 +32,14 @@
       <url>https://github.com/tomdz</url>
     </developer>
   </developers>
+
   <scm>
     <connection>scm:git:git://github.com/tomdz/sphinx-maven.git</connection>
     <developerConnection>scm:git:git@github.com:tomdz/sphinx-maven.git</developerConnection>
     <url>http://github.com/tomdz/sphinx-maven/tree/master</url>
     <tag>HEAD</tag>
   </scm>
+
   <distributionManagement>
     <snapshotRepository>
       <id>sonatype-nexus-snapshots</id>
@@ -46,6 +53,10 @@
       <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
+
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
 
   <dependencies>
     <dependency>
@@ -111,9 +122,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
+
   <build>
     <plugins>
       <plugin>
