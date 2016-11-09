@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e;
 SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE[0]:-$0}); pwd)
 BASE_DIR=$(cd "$SCRIPT_DIR/../../.."; pwd)
 WORK_DIR="target/sphinx-tmp"
