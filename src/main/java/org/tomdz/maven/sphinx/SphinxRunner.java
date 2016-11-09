@@ -1,21 +1,21 @@
 package org.tomdz.maven.sphinx;
 
+import org.python.core.Py;
+import org.python.core.PySystemState;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import org.python.core.Py;
-import org.python.core.PySystemState;
 
 public class SphinxRunner
 {
-    /**
+    /*
      * For running sphinx via a forked jvm (or standalone).
-     *
-     * @param args
      */
     public static void main(String[] args) throws ScriptException
     {
