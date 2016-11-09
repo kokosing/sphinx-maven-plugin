@@ -11,4 +11,4 @@ curl -LO "http://downloads.sourceforge.net/project/jython/jython/2.5.2/jython_in
 curl -O "http://peak.telecommunity.com/dist/ez_setup.py"
 java -jar jython_installer-2.5.2.jar -s -d jython -t standard
 ./jython/bin/jython ez_setup.py
-./jython/bin/easy_install docutils pygments jinja2 sphinx
+./jython/bin/easy_install docutils==0.9.1 pygments==1.5 jinja2==2.6 sphinx==1.1.3
