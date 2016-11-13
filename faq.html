@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Frequently Asked Questions &mdash; Sphinx-Maven 1.0.2 documentation</title>
+    <title>Frequently Asked Questions &#8212; Sphinx-Maven 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,8 +15,8 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0.2',
+        URL_ROOT:    './',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,29 +26,32 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/bootstrap.js"></script>
-    <link rel="top" title="Sphinx-Maven 1.0.2 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Sphinx-Maven 2.0 documentation" href="index.html" />
     <link rel="prev" title="Updating Sphinx" href="development.html" /> 
   </head>
-  <body>
+  <body role="document">
 <div class="container">
   <div class="row">
     <div class="span3">
       
   <ul class="nav nav-list">
     <li>
-      <a class="brand" href="index.html">Sphinx-Maven 1.0.2</a>
+      <a class="brand" href="index.html">Sphinx-Maven 2.0</a>
     </li>
     <li class="divider"></li>
     
       <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Creating the documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-site-lifecycle">Running as part of the <tt class="docutils literal"><span class="pre">site</span></tt> lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-site-lifecycle">Running as part of the <code class="docutils literal"><span class="pre">site</span></code> lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-normal-lifecycle">Running as part of the normal lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html#building-pdfs">Building PDFs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html#a-note-on-memory-usage">A note on memory usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Updating Sphinx</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html#fixing-bugs-in-one-of-the-python-libraries">Fixing bugs in one of the Python libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html#running-normal-sphinx">Running normal Sphinx</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Frequently Asked Questions</a></li>
 </ul>
 
     
@@ -90,7 +92,7 @@ in the root folder. Once you pushed that file, Jekyll will be turned off for the
 documentation should look as intended.
 If you are using the <a class="reference external" href="https://github.com/github/maven-plugins">Github maven plugins</a> to deploy your site, then you can tell the <cite>site-maven-plugin</cite> to
 automatically maintain the <cite>.nojekyll</cite> file by adding:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">noJekyll</span><span class="o">&gt;</span><span class="n">true</span><span class="o">&lt;/</span><span class="n">noJekyll</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">noJekyll</span><span class="o">&gt;</span><span class="n">true</span><span class="o">&lt;/</span><span class="n">noJekyll</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>to the configuration of the <cite>site-maven-plugin</cite> plugin (since version 0.5 of the plugin).</p>
@@ -106,7 +108,7 @@ automatically maintain the <cite>.nojekyll</cite> file by adding:</p>
     <p class="pull-right"><a href="#">Back to top</a></p>
     <p>
         &copy; Copyright 2011, Thomas Dudziak.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>
 </footer>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuration &mdash; Sphinx-Maven 1.0.2 documentation</title>
+    <title>Configuration &#8212; Sphinx-Maven 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,8 +15,8 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0.2',
+        URL_ROOT:    './',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,29 +26,32 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/bootstrap.js"></script>
-    <link rel="top" title="Sphinx-Maven 1.0.2 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Sphinx-Maven 2.0 documentation" href="index.html" />
     <link rel="next" title="Updating Sphinx" href="development.html" />
     <link rel="prev" title="Creating the documentation" href="basic-usage.html" /> 
   </head>
-  <body>
+  <body role="document">
 <div class="container">
   <div class="row">
     <div class="span3">
       
   <ul class="nav nav-list">
     <li>
-      <a class="brand" href="index.html">Sphinx-Maven 1.0.2</a>
+      <a class="brand" href="index.html">Sphinx-Maven 2.0</a>
     </li>
     <li class="divider"></li>
     
       <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Creating the documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-site-lifecycle">Running as part of the <tt class="docutils literal"><span class="pre">site</span></tt> lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-site-lifecycle">Running as part of the <code class="docutils literal"><span class="pre">site</span></code> lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-normal-lifecycle">Running as part of the normal lifecycle</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#building-pdfs">Building PDFs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#a-note-on-memory-usage">A note on memory usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">Updating Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html#fixing-bugs-in-one-of-the-python-libraries">Fixing bugs in one of the Python libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html#running-normal-sphinx">Running normal Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 
@@ -82,7 +84,7 @@
       
   <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
-<p>The <tt class="docutils literal"><span class="pre">sphinx-maven</span></tt> plugin has these configuration options:</p>
+<p>The <code class="docutils literal"><span class="pre">sphinx-maven</span></code> plugin has these configuration options:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="13%" />
@@ -96,89 +98,64 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">sourceDirectory</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">sourceDirectory</span></code></td>
 <td>The directory containing the documentation source.</td>
-<td><tt class="docutils literal"><span class="pre">${basedir}/src/site/sphinx</span></tt></td>
+<td><code class="docutils literal"><span class="pre">${basedir}/src/site/sphinx</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">outputDirectory</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">outputDirectory</span></code></td>
 <td>The directory where the generated output will be placed.</td>
-<td><tt class="docutils literal"><span class="pre">${project.reporting.outputDirectory}</span></tt></td>
+<td><code class="docutils literal"><span class="pre">${project.reporting.outputDirectory}</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">fork</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">fork</span></code></td>
 <td>Whether to run Sphinx in a forked JVM instance.</td>
-<td><tt class="docutils literal"><span class="pre">false</span></tt></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">jvm</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">jvm</span></code></td>
 <td>The JVM binary to use. If not set, then will use the one used to run the plugin.</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">argLine</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">argLine</span></code></td>
 <td>Additional arguments for the forked JVM instance (such as memory options).</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">forkTimeoutSec</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">forkTimeoutSec</span></code></td>
 <td>How long the plugin should wait for the plugin. 0 means wait forever.</td>
-<td><tt class="docutils literal"><span class="pre">0</span></tt></td>
+<td><code class="docutils literal"><span class="pre">0</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">outputName</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">outputName</span></code></td>
 <td>The base name used to create the report&#8217;s output file(s).</td>
-<td><tt class="docutils literal"><span class="pre">index</span></tt></td>
+<td><code class="docutils literal"><span class="pre">index</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">name</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">name</span></code></td>
 <td>The name of the report.</td>
-<td><tt class="docutils literal"><span class="pre">Documentation</span> <span class="pre">via</span> <span class="pre">sphinx</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Documentation</span> <span class="pre">via</span> <span class="pre">sphinx</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">description</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">description</span></code></td>
 <td>The description of the report.</td>
-<td><tt class="docutils literal"><span class="pre">Documentation</span> <span class="pre">via</span> <span class="pre">sphinx</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Documentation</span> <span class="pre">via</span> <span class="pre">sphinx</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">builder</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">builder</span></code></td>
 <td>The builder to use. See the <a class="reference external" href="http://sphinx.pocoo.org/man/sphinx-build.html?highlight=command%20line">Sphinx commandline documentation</a> for a list of possible builders.</td>
-<td><tt class="docutils literal"><span class="pre">html</span></tt></td>
+<td><code class="docutils literal"><span class="pre">html</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">verbose</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">verbose</span></code></td>
 <td>Whether Sphinx should generate verbose output.</td>
-<td><tt class="docutils literal"><span class="pre">true</span></tt></td>
+<td><code class="docutils literal"><span class="pre">true</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">warningsAsErrors</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">warningsAsErrors</span></code></td>
 <td>Whether warnings should be treated as errors.</td>
-<td><tt class="docutils literal"><span class="pre">false</span></tt></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">force</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">force</span></code></td>
 <td>Whether Sphinx should generate output for all files instead of only the changed ones.</td>
-<td><tt class="docutils literal"><span class="pre">false</span></tt></td>
+<td><code class="docutils literal"><span class="pre">false</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">tags</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">tags</span></code></td>
 <td>Additional tags to pass to Sphinx. See the <a class="reference external" href="http://sphinx.pocoo.org/markup/misc.html#tags">Sphinx tag documentation</a> for more information.</td>
 <td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="building-pdfs">
-<h1>Building PDFs<a class="headerlink" href="#building-pdfs" title="Permalink to this headline">¶</a></h1>
-<p>The <tt class="docutils literal"><span class="pre">sphinx-maven</span></tt> plugin has experimental support for PDF generation. You&#8217;ll turn it on
-by using the pdf builder, e.g.:</p>
-<div class="highlight-python"><pre>&lt;plugin&gt;
-  &lt;groupId&gt;org.tomdz.maven&lt;/groupId&gt;
-  &lt;artifactId&gt;sphinx-maven-plugin&lt;/artifactId&gt;
-  &lt;version&gt;1.0.3&lt;/version&gt;
-  &lt;configuration&gt;
-    &lt;builder&gt;pdf&lt;/builder&gt;
-    &lt;outputDirectory&gt;${project.reporting.outputDirectory}/pdf&lt;/outputDirectory&gt;
-  &lt;/configuration&gt;
-&lt;/plugin&gt;</pre>
-</div>
-<p>You&#8217;ll likely also have to add some additional configuration options to your <tt class="docutils literal"><span class="pre">conf.py</span></tt>
-file (usually in <tt class="docutils literal"><span class="pre">src/site/sphinx</span></tt>) to tell the pdf builder what to do. At a minimum
-you&#8217;ll probably need to point it to the index page by adding this to the end:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -- Options for PDF output ---------------------------------------------------</span>
-<span class="n">pdf_documents</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s">&#39;index&#39;</span><span class="p">,</span> <span class="s">u&#39;&lt;file name&gt;&#39;</span><span class="p">,</span> <span class="s">u&#39;&lt;document name&gt;&#39;</span><span class="p">,</span> <span class="s">u&#39;&lt;author&gt;&#39;</span><span class="p">),</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p>For additional options see the Sphinx section of the <a class="reference external" href="http://lateral.netmanagers.com.ar/static/manual.pdf">rst2pdf manual</a>.</p>
 </div>
 <div class="section" id="a-note-on-memory-usage">
 <h1>A note on memory usage<a class="headerlink" href="#a-note-on-memory-usage" title="Permalink to this headline">¶</a></h1>
@@ -188,17 +165,17 @@ of PermGen space). Therefore we suggest to either run maven with at least 256mb 
 <blockquote>
 <div>MAVEN_OPTS=&#8221;-Xmx256m -XX:MaxPermSize=128m&#8221; mvn site</div></blockquote>
 <p>or use the fork parameter of the plugin, e.g.:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">groupId</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="n">tomdz</span><span class="o">.</span><span class="n">maven</span><span class="o">&lt;/</span><span class="n">groupId</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">artifactId</span><span class="o">&gt;</span><span class="n">sphinx</span><span class="o">-</span><span class="n">maven</span><span class="o">-</span><span class="n">plugin</span><span class="o">&lt;/</span><span class="n">artifactId</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">version</span><span class="o">&gt;</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">version</span><span class="o">&gt;</span>
-  <span class="o">&lt;</span><span class="n">configuration</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">fork</span><span class="o">&gt;</span><span class="n">true</span><span class="o">&lt;/</span><span class="n">fork</span><span class="o">&gt;</span>
-    <span class="o">&lt;</span><span class="n">argLine</span><span class="o">&gt;-</span><span class="n">Xmx256m</span> <span class="o">-</span><span class="n">XX</span><span class="p">:</span><span class="n">MaxPermSize</span><span class="o">=</span><span class="mi">128</span><span class="n">m</span><span class="o">&lt;/</span><span class="n">argLine</span><span class="o">&gt;</span>
-  <span class="o">&lt;/</span><span class="n">configuration</span><span class="o">&gt;</span>
-<span class="o">&lt;/</span><span class="n">plugin</span><span class="o">&gt;</span>
-</pre></div>
-</div>
+<pre class="literal-block">
+&lt;plugin&gt;
+  &lt;groupId&gt;io.airlift.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;sphinx-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;2.0&lt;/version&gt;
+  &lt;configuration&gt;
+    &lt;fork&gt;true&lt;/fork&gt;
+    &lt;argLine&gt;-Xmx256m -XX:MaxPermSize=128m&lt;/argLine&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;
+</pre>
 </div>
 
 
@@ -210,7 +187,7 @@ of PermGen space). Therefore we suggest to either run maven with at least 256mb 
     <p class="pull-right"><a href="#">Back to top</a></p>
     <p>
         &copy; Copyright 2011, Thomas Dudziak.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>
 </footer>

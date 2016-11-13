@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Updating Sphinx &mdash; Sphinx-Maven 1.0.2 documentation</title>
+    <title>Updating Sphinx &#8212; Sphinx-Maven 2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -16,8 +15,8 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.0.2',
+        URL_ROOT:    './',
+        VERSION:     '2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,29 +26,32 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/bootstrap.js"></script>
-    <link rel="top" title="Sphinx-Maven 1.0.2 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="Sphinx-Maven 2.0 documentation" href="index.html" />
     <link rel="next" title="Frequently Asked Questions" href="faq.html" />
     <link rel="prev" title="Configuration" href="configuration.html" /> 
   </head>
-  <body>
+  <body role="document">
 <div class="container">
   <div class="row">
     <div class="span3">
       
   <ul class="nav nav-list">
     <li>
-      <a class="brand" href="index.html">Sphinx-Maven 1.0.2</a>
+      <a class="brand" href="index.html">Sphinx-Maven 2.0</a>
     </li>
     <li class="divider"></li>
     
       <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Creating the documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-site-lifecycle">Running as part of the <tt class="docutils literal"><span class="pre">site</span></tt> lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-site-lifecycle">Running as part of the <code class="docutils literal"><span class="pre">site</span></code> lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basic-usage.html#running-as-part-of-the-normal-lifecycle">Running as part of the normal lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="configuration.html#building-pdfs">Building PDFs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html#a-note-on-memory-usage">A note on memory usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Updating Sphinx</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Updating Sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#fixing-bugs-in-one-of-the-python-libraries">Fixing bugs in one of the Python libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#running-normal-sphinx">Running normal Sphinx</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 </ul>
 
@@ -84,41 +86,57 @@
 <h1>Updating Sphinx<a class="headerlink" href="#updating-sphinx" title="Permalink to this headline">¶</a></h1>
 <p>The project comes with a bash script which will update the embedded sphinx installation
 automatically. Simple invoke it like so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">update</span><span class="o">-</span><span class="n">sphinx</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">update</span><span class="o">-</span><span class="n">sphinx</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <div class="section" id="how-the-update-script-works">
 <h2>How the update script works<a class="headerlink" href="#how-the-update-script-works" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>It sets up a temporary working directory <tt class="docutils literal"><span class="pre">target/sphinx-tmp</span></tt> and cd&#8217;s into it.</li>
+<li>It sets up a temporary working directory <code class="docutils literal"><span class="pre">target/sphinx-tmp</span></code> and cd&#8217;s into it.</li>
 <li>It downloads the Jython installer for version 2.5.2 from Sourceforge.</li>
-<li>It downloads the <tt class="docutils literal"><span class="pre">ez_setup.py</span></tt> script which will setup <tt class="docutils literal"><span class="pre">easy_install</span></tt>.</li>
+<li>It downloads the <code class="docutils literal"><span class="pre">ez_setup.py</span></code> script which will setup <code class="docutils literal"><span class="pre">easy_install</span></code>.</li>
 <li>It installs Jython in the temporary directory.</li>
-<li>It installs <tt class="docutils literal"><span class="pre">easy_install</span></tt> in the temporary directory.</li>
-<li>It uses <tt class="docutils literal"><span class="pre">easy_install</span></tt> to install <tt class="docutils literal"><span class="pre">docutils</span></tt>, <tt class="docutils literal"><span class="pre">pygments</span></tt>, <tt class="docutils literal"><span class="pre">jinja2</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, and <tt class="docutils literal"><span class="pre">rst2pdf</span></tt>.</li>
-<li><tt class="docutils literal"><span class="pre">rst2pdf</span></tt> depends on <tt class="docutils literal"><span class="pre">ReportLab</span></tt>, but unfortunatly that won&#8217;t install
-directly with <tt class="docutils literal"><span class="pre">easy_install</span></tt>. The reason for that is that by default it is
-trying to install native extensions which won&#8217;t work on Jython. To workaround
-that, the script downloads the <tt class="docutils literal"><span class="pre">ReportLab</span></tt> distribution directly, unpacks it,
-removes the native extensions (the setup script will be fine with it), and then
-runs the installation manually.</li>
-<li><tt class="docutils literal"><span class="pre">rst2pdf</span></tt> itself also has a bug with Pyton (see this <a class="reference external" href="https://code.google.com/p/rst2pdf/issues/detail?id=458">rst2pdf bug</a>) which we&#8217;ll
-patch and then trigger Jython to pre-compile the module again.</li>
-<li>Finally, we create the <tt class="docutils literal"><span class="pre">sphinx.jar</span></tt> out of the installed modules, and move it to
-<tt class="docutils literal"><span class="pre">src/main/resources</span></tt> (which will cause it to be included as a file in the plugin).</li>
+<li>It installs <code class="docutils literal"><span class="pre">easy_install</span></code> in the temporary directory.</li>
+<li>It uses <code class="docutils literal"><span class="pre">easy_install</span></code> to install <code class="docutils literal"><span class="pre">docutils</span></code>, <code class="docutils literal"><span class="pre">pygments</span></code>, <code class="docutils literal"><span class="pre">jinja2</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>.</li>
+<li>Finally, we create the <code class="docutils literal"><span class="pre">sphinx.jar</span></code> out of the installed modules, and move it to
+<code class="docutils literal"><span class="pre">src/main/resources</span></code> (which will cause it to be included as a file in the plugin).</li>
 </ol>
+<p>Steps 1-8 are performed by the <cite>setup-jython-env.sh</cite> script which is executed by
+the <cite>update-sphinx.sh</cite> script.</p>
+</div>
+</div>
+<div class="section" id="fixing-bugs-in-one-of-the-python-libraries">
+<h1>Fixing bugs in one of the Python libraries<a class="headerlink" href="#fixing-bugs-in-one-of-the-python-libraries" title="Permalink to this headline">¶</a></h1>
+<p>Occasionally there are bugs in one of the python libraries, either plain bugs or bugs when running
+under Jython, that need to be fixed for sphinx-maven to work. In this case, you can use the
+<code class="docutils literal"><span class="pre">setup-jython-env.sh</span></code> script to setup an unpacked, editable sphinx jython environment:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">src</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">setup</span><span class="o">-</span><span class="n">jython</span><span class="o">-</span><span class="n">env</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This script will create a temporary folder <code class="docutils literal"><span class="pre">target/sphinx-tmp</span></code> into which it installs Jython and all
+relevant libraries plus patch them as necessary (as described above).</p>
+<p>Now you can simply use that environment directly:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;$SPHINX_MAVEN_DIR/target/sphinx-tmp/jython/bin/sphinx-build&quot;</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">b</span> <span class="n">pdf</span> <span class="n">src</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">sphinx</span> <span class="n">target</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">pdf</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">SPHINX_MAVEN_DIR</span></code> points to where you have checked out the sphinx maven project.</p>
+<p>The neat thing with this is that you can now edit the python code directly. The packages are under:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">target</span><span class="o">/</span><span class="n">sphinx</span><span class="o">-</span><span class="n">tmp</span><span class="o">/</span><span class="n">jython</span><span class="o">/</span><span class="n">Lib</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span>
+</pre></div>
+</div>
+<p>Once you&#8217;re done, simply create a patch file to an untouched sphinx + dependencies installation.</p>
 </div>
 <div class="section" id="running-normal-sphinx">
-<h2>Running normal Sphinx<a class="headerlink" href="#running-normal-sphinx" title="Permalink to this headline">¶</a></h2>
+<h1>Running normal Sphinx<a class="headerlink" href="#running-normal-sphinx" title="Permalink to this headline">¶</a></h1>
 <p>If you want to compare to the normal sphinx, install it like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">easy_install</span> <span class="n">sphinx</span> <span class="n">rst2pdf</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">easy_install</span><span class="o">-</span><span class="mf">2.5</span> <span class="n">sphinx</span>
 </pre></div>
 </div>
-<p>and run Sphinx like so in your project&#8217;s root directory:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span> <span class="n">src</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">sphinx</span> <span class="n">target</span><span class="o">/</span><span class="n">site</span>
+<p>Note that this uses Python version 2.5 which is what Jython 2.x provides.
+Now run Sphinx like so in your project&#8217;s root directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span> <span class="n">src</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">sphinx</span> <span class="n">target</span><span class="o">/</span><span class="n">site</span>
 <span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">b</span> <span class="n">pdf</span> <span class="n">src</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">sphinx</span> <span class="n">target</span><span class="o">/</span><span class="n">site</span><span class="o">/</span><span class="n">pdf</span>
 </pre></div>
-</div>
 </div>
 </div>
 
@@ -131,7 +149,7 @@ patch and then trigger Jython to pre-compile the module again.</li>
     <p class="pull-right"><a href="#">Back to top</a></p>
     <p>
         &copy; Copyright 2011, Thomas Dudziak.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4.8.<br/>
     </p>
   </div>
 </footer>
