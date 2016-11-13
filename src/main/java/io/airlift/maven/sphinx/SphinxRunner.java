@@ -1,4 +1,4 @@
-package org.tomdz.maven.sphinx;
+package io.airlift.maven.sphinx;
 
 import org.python.core.Py;
 import org.python.core.PySystemState;

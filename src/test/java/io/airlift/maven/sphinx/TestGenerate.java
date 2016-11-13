@@ -1,7 +1,6 @@
-package org.tomdz.maven.sphinx;
+package io.airlift.maven.sphinx;
 
 import java.io.File;
-import java.util.List;
 import com.google.common.io.Files;
 import io.takari.maven.testing.TestResources;
 import io.takari.maven.testing.executor.MavenRuntime;

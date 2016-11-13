@@ -1,4 +1,4 @@
-package org.tomdz.maven.sphinx;
+package io.airlift.maven.sphinx;
 
 import java.io.File;
 import java.io.FileOutputStream;
