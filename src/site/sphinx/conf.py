@@ -18,6 +18,22 @@
 # -*- coding: utf-8 -*-
 
 import sys, os
+import xml.dom.minidom
+
+
+def maven_version(pom):
+    dom = xml.dom.minidom.parse(pom)
+    for i in dom.childNodes[0].childNodes:
+        if (i.nodeType == i.ELEMENT_NODE) and (i.tagName == 'version'):
+            return i.childNodes[0].data
+
+
+def get_version():
+    version = os.environ.get('PROJECT_VERSION', '').strip()
+    return version or maven_version('../../../pom.xml')
+
+
+# -- General configuration -----------------------------------------------------
 
 needs_sphinx = '1.0'
 
@@ -34,16 +50,14 @@ master_doc = 'index'
 project = u'Sphinx-Maven'
 copyright = u'2011, Thomas Dudziak'
 
-version = '1.0.2'
-release = '1.0.2'
+version = get_version()
+release = version
 
 exclude_trees = ['.build']
 
 add_function_parentheses = True
 
 pygments_style = 'trac'
-
-master_doc = 'index'
 
 # -- Options for HTML output ---------------------------------------------------
 sys.path.append(os.path.abspath('_themes'))

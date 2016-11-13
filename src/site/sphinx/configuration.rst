@@ -35,12 +35,14 @@ of PermGen space). Therefore we suggest to either run maven with at least 256mb 
 
     MAVEN_OPTS="-Xmx256m -XX:MaxPermSize=128m" mvn site
 
-or use the fork parameter of the plugin, e.g.::
+or use the fork parameter of the plugin, e.g.:
+
+.. parsed-literal::
 
     <plugin>
       <groupId>io.airlift.maven.plugins</groupId>
       <artifactId>sphinx-maven-plugin</artifactId>
-      <version>1.0</version>
+      <version>\ |version|\ </version>
       <configuration>
         <fork>true</fork>
         <argLine>-Xmx256m -XX:MaxPermSize=128m</argLine>

@@ -34,7 +34,9 @@ and `Celery`_ (documentation source can be found on `Celery's github page`_).
 Running as part of the ``site`` lifecycle
 =========================================
 
-Simply add the sphinx maven plugin to your ``pom.xml``::
+Simply add the sphinx maven plugin to your ``pom.xml``:
+
+.. parsed-literal::
 
     <reporting>
       <plugins>
@@ -51,7 +53,7 @@ Simply add the sphinx maven plugin to your ``pom.xml``::
         <plugin>
           <groupId>io.airlift.maven.plugins</groupId>
           <artifactId>sphinx-maven-plugin</artifactId>
-          <version>1.0.1</version>
+          <version>\ |version|\ </version>
         </plugin>
       </plugins>
     </reporting>
@@ -61,7 +63,9 @@ It is important that you set the ``reportSet`` attribute of the ``project-info-r
 plugin, and in effect Sphinx will not be run.
 
 *Maven 3* changes how reporting plugins are specified. A ``profile`` can be used to define a ``pom.xml`` that can
-be used with both Maven 2 and Maven 3::
+be used with both Maven 2 and Maven 3:
+
+.. parsed-literal::
 
     <profiles>
       <profile>
@@ -93,7 +97,7 @@ be used with both Maven 2 and Maven 3::
                   <plugin>
                     <groupId>io.airlift.</groupId>
                     <artifactId>sphinx-maven-plugin</artifactId>
-                    <version>1.0</version>
+                    <version>\ |version|\ </version>
                   </plugin>
                 </reportPlugins>
               </configuration>
@@ -122,7 +126,9 @@ The plugin configuration is pretty much the same, the only difference is that yo
 It might also be useful to change the ``outputDirectory`` to a different folder as the plugin by default puts the
 generated documentation into the ``target/site`` folder.
 
-A sample ``pom.xml`` plugin section could look like this::
+A sample ``pom.xml`` plugin section could look like this:
+
+.. parsed-literal::
 
     <build>
       <plugins>
@@ -130,7 +136,7 @@ A sample ``pom.xml`` plugin section could look like this::
         <plugin>
           <groupId>io.airlift.maven.plugins</groupId>
           <artifactId>sphinx-maven-plugin</artifactId>
-          <version>1.0</version>
+          <version>\ |version|\ </version>
           <configuration>
             <outputDirectory>${project.build.directory}/docs</outputDirectory>
           </configuration>
