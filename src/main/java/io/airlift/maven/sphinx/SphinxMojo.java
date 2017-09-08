@@ -317,6 +317,7 @@ public class SphinxMojo
                 args.add(tag);
             }
         }
+        args.add("-N");
         args.add("-n");
         args.add(sourceDirectory.getAbsolutePath());
         args.add(outputDirectory.getAbsolutePath());
