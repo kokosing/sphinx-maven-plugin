@@ -16,7 +16,7 @@ import static com.google.common.base.Charsets.UTF_8;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(MavenJUnitTestRunner.class)
-@MavenVersions({"3.0.5", "3.3.3"})
+@MavenVersions({"3.3.9", "3.5.0", "3.5.2"})
 @SuppressWarnings("JUnitTestNG")
 public class TestGenerate
 {
