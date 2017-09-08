@@ -17,7 +17,8 @@ public class SphinxRunner
     /*
      * For running sphinx via a forked jvm (or standalone).
      */
-    public static void main(String[] args) throws ScriptException
+    public static void main(String[] args)
+            throws ScriptException
     {
         // use headless mode for AWT (prevent "Launcher" app on Mac OS X)
         System.setProperty("java.awt.headless", "true");
@@ -25,7 +26,8 @@ public class SphinxRunner
         System.exit(run(args));
     }
 
-    public static int run(String[] args) throws ScriptException
+    public static int run(String[] args)
+            throws ScriptException
     {
         // this setting supposedly allows GCing of jython-generated classes but I'm
         // not sure if this setting has any effect on newer jython versions anymore
@@ -35,7 +37,7 @@ public class SphinxRunner
         String sphinxSourceDirectory = null;
         List<String> sphinxArgs = new ArrayList<String>(Arrays.asList(args));
 
-        for (Iterator<String> it = sphinxArgs.iterator(); it.hasNext();) {
+        for (Iterator<String> it = sphinxArgs.iterator(); it.hasNext(); ) {
             String arg = it.next();
             if ("--sphinxSourceDirectory".equals(arg) && it.hasNext()) {
                 // we need to remove it from the argument list as sphinx wouldn't like it

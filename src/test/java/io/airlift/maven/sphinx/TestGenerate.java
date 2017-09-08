@@ -1,6 +1,5 @@
 package io.airlift.maven.sphinx;
 
-import java.io.File;
 import com.google.common.io.Files;
 import io.takari.maven.testing.TestResources;
 import io.takari.maven.testing.executor.MavenRuntime;
@@ -10,6 +9,8 @@ import io.takari.maven.testing.executor.junit.MavenJUnitTestRunner;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.io.File;
 
 import static com.google.common.base.Charsets.UTF_8;
 import static org.junit.Assert.assertTrue;

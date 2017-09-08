@@ -1,13 +1,5 @@
 package io.airlift.maven.sphinx;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.ArchiveInputStream;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
@@ -34,11 +26,21 @@ import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.StreamConsumer;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+
 /**
  * @author tomdz
  */
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.SITE)
-public class SphinxMojo extends AbstractMavenReport
+public class SphinxMojo
+        extends AbstractMavenReport
 {
     /**
      * The maven project object.
@@ -172,14 +174,14 @@ public class SphinxMojo extends AbstractMavenReport
     /**
      * Arbitrary JVM options for the forked sphinx process to set on the command line.
      */
-    @Parameter(alias="argLine")
+    @Parameter(alias = "argLine")
     private String argLine;
 
     /**
      * Kill the forked sphinx process after a certain number of seconds. If set to 0, wait forever for the process, never
      * timing out.
      */
-    @Parameter(alias="forkTimeoutSec")
+    @Parameter(alias = "forkTimeoutSec")
     private int forkTimeoutSec;
 
     @Override
@@ -225,7 +227,8 @@ public class SphinxMojo extends AbstractMavenReport
     }
 
     @Override
-    public void execute() throws MojoExecutionException
+    public void execute()
+            throws MojoExecutionException
     {
         try {
             executeReport(Locale.getDefault());
@@ -236,7 +239,8 @@ public class SphinxMojo extends AbstractMavenReport
     }
 
     @Override
-    protected void executeReport(Locale locale) throws MavenReportException
+    protected void executeReport(Locale locale)
+            throws MavenReportException
     {
         outputDirectory.mkdirs();
 
@@ -250,7 +254,8 @@ public class SphinxMojo extends AbstractMavenReport
         }
     }
 
-    private void unpackSphinx() throws MavenReportException
+    private void unpackSphinx()
+            throws MavenReportException
     {
         if (!sphinxSourceDirectory.exists() && !sphinxSourceDirectory.mkdirs()) {
             throw new MavenReportException("Could not generate the temporary directory " + sphinxSourceDirectory.getAbsolutePath() + " for the sphinx sources");
@@ -318,7 +323,8 @@ public class SphinxMojo extends AbstractMavenReport
         return args.toArray(new String[args.size()]);
     }
 
-    private void runSphinx() throws MavenReportException
+    private void runSphinx()
+            throws MavenReportException
     {
         if (verbose) {
             getLog().info("Running sphinx on " + sourceDirectory.getAbsolutePath() + ", output will be placed in " + outputDirectory.getAbsolutePath());
@@ -338,7 +344,8 @@ public class SphinxMojo extends AbstractMavenReport
         }
     }
 
-    private void runForkedSphinx() throws MavenReportException
+    private void runForkedSphinx()
+            throws MavenReportException
     {
         String jvmBinary = jvm;
 
@@ -365,18 +372,20 @@ public class SphinxMojo extends AbstractMavenReport
         String[] args = getSphinxRunnerCmdLine();
 
         cmdLine.createArg().setValue(className);
-        for (String arg: args) {
+        for (String arg : args) {
             cmdLine.createArg().setValue(arg);
         }
 
-        StreamConsumer infoStreamConsumer = new StreamConsumer() {
+        StreamConsumer infoStreamConsumer = new StreamConsumer()
+        {
             @Override
             public void consumeLine(String line)
             {
                 getLog().info(line);
             }
         };
-        StreamConsumer errorStreamConsumer = new StreamConsumer() {
+        StreamConsumer errorStreamConsumer = new StreamConsumer()
+        {
             @Override
             public void consumeLine(String line)
             {
@@ -388,17 +397,16 @@ public class SphinxMojo extends AbstractMavenReport
 
         int result = 0;
 
-        try
-        {
+        try {
             int timeout = forkTimeoutSec > 0 ? forkTimeoutSec : 0;
 
-            result = CommandLineUtils.executeCommandLine(cmdLine,
-                                                         infoStreamConsumer,
-                                                         errorStreamConsumer,
-                                                         timeout);
+            result = CommandLineUtils.executeCommandLine(
+                    cmdLine,
+                    infoStreamConsumer,
+                    errorStreamConsumer,
+                    timeout);
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             throw new MavenReportException("Could not execute sphinx in a forked jvm", ex);
         }
         if (result != 0) {
@@ -406,7 +414,8 @@ public class SphinxMojo extends AbstractMavenReport
         }
     }
 
-    private String getPluginClasspath() throws ArtifactResolutionException, ArtifactNotFoundException
+    private String getPluginClasspath()
+            throws ArtifactResolutionException, ArtifactNotFoundException
     {
         Set<Artifact> artifacts = new HashSet<Artifact>(1);
 
@@ -414,16 +423,17 @@ public class SphinxMojo extends AbstractMavenReport
 
         // we need the dummy artifact here so that maven actually resolves the
         // plugin's dependencies for us and returns them in the result object
-        Artifact originatingArtifact = artifactFactory.createBuildArtifact( "dummy", "dummy", "1.0", "jar" );
-        ArtifactResolutionResult result = resolver.resolveTransitively(artifacts,
-                                                                       originatingArtifact,
-                                                                       remoteRepositories,
-                                                                       localRepository,
-                                                                       artifactMetadataSource);
+        Artifact originatingArtifact = artifactFactory.createBuildArtifact("dummy", "dummy", "1.0", "jar");
+        ArtifactResolutionResult result = resolver.resolveTransitively(
+                artifacts,
+                originatingArtifact,
+                remoteRepositories,
+                localRepository,
+                artifactMetadataSource);
         StringBuilder classpath = new StringBuilder();
 
         for (Object obj : result.getArtifacts()) {
-            Artifact curArtifact = (Artifact)obj;
+            Artifact curArtifact = (Artifact) obj;
 
             if (classpath.length() > 0) {
                 classpath.append(File.pathSeparatorChar);
