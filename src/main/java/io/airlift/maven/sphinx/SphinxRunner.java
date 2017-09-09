@@ -1,7 +1,6 @@
 package io.airlift.maven.sphinx;
 
 import org.python.core.Py;
-import org.python.core.PySystemState;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -29,11 +28,6 @@ public class SphinxRunner
     public static int run(String[] args)
             throws ScriptException
     {
-        // this setting supposedly allows GCing of jython-generated classes but I'm
-        // not sure if this setting has any effect on newer jython versions anymore
-        System.setProperty("python.options.internalTablesImpl", "weak");
-
-        PySystemState engineSys = new PySystemState();
         String sphinxSourceDirectory = null;
         List<String> sphinxArgs = new ArrayList<String>(Arrays.asList(args));
 
@@ -51,10 +45,11 @@ public class SphinxRunner
             throw new IllegalArgumentException("No --sphinxSourceDirectory argument given");
         }
 
-        engineSys.path.append(Py.newString(sphinxSourceDirectory));
-        Py.setSystemState(engineSys);
-
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("python");
+
+        engine.put("sphinx_path", Py.newString(sphinxSourceDirectory));
+        engine.eval("import sys");
+        engine.eval("sys.path.append(sphinx_path)");
 
         engine.eval("import os");
         engine.eval("os.environ['LANG'] = 'en_US.UTF-8'");
