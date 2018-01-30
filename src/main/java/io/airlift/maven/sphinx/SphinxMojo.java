@@ -349,9 +349,11 @@ public class SphinxMojo
             throws MavenReportException
     {
         String jvmBinary = jvm;
+        boolean sameJvmBinary = false;
 
         if ((jvmBinary == null) || "".equals(jvmBinary)) {
             jvmBinary = System.getProperty("java.home") + File.separator + "bin" + File.separator + "java";
+            sameJvmBinary = true;
         }
         getLog().debug("Using JVM: " + jvmBinary);
 
@@ -359,9 +361,21 @@ public class SphinxMojo
 
         cmdLine.setWorkingDirectory(basedir);
         cmdLine.setExecutable(jvmBinary);
+
+        // work around for http://bugs.jython.org/issue2582
+        if (sameJvmBinary && isAtLeastJava9()) {
+            cmdLine.createArg().setLine("--add-opens java.base/java.lang=ALL-UNNAMED");
+            cmdLine.createArg().setLine("--add-opens java.base/java.io=ALL-UNNAMED");
+            cmdLine.createArg().setLine("--add-opens java.base/java.nio=ALL-UNNAMED");
+            cmdLine.createArg().setLine("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
+            cmdLine.createArg().setLine("--add-opens java.xml/com.sun.org.apache.xerces.internal.jaxp=ALL-UNNAMED");
+            cmdLine.createArg().setLine("--add-opens java.xml/com.sun.org.apache.xerces.internal.parsers=ALL-UNNAMED");
+        }
+
         if (argLine != null) {
             cmdLine.createArg().setLine(argLine.replace("\n", " ").replace("\r", " "));
         }
+
         try {
             cmdLine.addEnvironment("CLASSPATH", getPluginClasspath());
         }
@@ -442,5 +456,17 @@ public class SphinxMojo
             classpath.append(curArtifact.getFile().getAbsolutePath());
         }
         return classpath.toString();
+    }
+
+    @SuppressWarnings("JavaReflectionMemberAccess")
+    private static boolean isAtLeastJava9()
+    {
+        try {
+            Runtime.class.getMethod("version");
+            return true;
+        }
+        catch (NoSuchMethodException e) {
+            return false;
+        }
     }
 }
