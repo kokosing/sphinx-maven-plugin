@@ -184,6 +184,12 @@ public class SphinxMojo
     @Parameter(alias = "forkTimeoutSec")
     private int forkTimeoutSec;
 
+    /**
+     * Whether sphinx should be run in parallel.
+     */
+    @Parameter(alias = "parallel", defaultValue = "false")
+    private boolean parallel;
+
     @Override
     public String getDescription(Locale defaultLocale)
     {
@@ -316,6 +322,10 @@ public class SphinxMojo
                 args.add("-t");
                 args.add(tag);
             }
+        }
+        if (parallel) {
+            args.add("-j");
+            args.add("auto");
         }
         args.add("-N");
         args.add("-n");
